@@ -33,5 +33,6 @@ module.exports = {
     ],
     'import/no-absolute-path': 'off',
     'react/react-in-jsx-scope': 'off',
+    'import/prefer-default-export': 'off',
   },
 };
