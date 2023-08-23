@@ -1,6 +1,7 @@
-import {createSliceSelector} from '../../../share';
-import {moduleName} from './slice';
+import {createSliceSelector} from '@shared/lib';
+
 import {RootState} from '../../../app/store';
+import {moduleName} from './slice';
 
 const selectState = createSliceSelector(moduleName);
 

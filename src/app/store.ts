@@ -1,5 +1,5 @@
+import {name as adsManage, reducer as adsManageReducer} from '@entities/ads';
 import {combineReducers, configureStore} from '@reduxjs/toolkit';
-import {reducer as adsManageReducer, name as adsManage} from '../entities/ads';
 
 const rootReducer = combineReducers({
   [adsManage]: adsManageReducer,

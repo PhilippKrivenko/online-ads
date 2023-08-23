@@ -14,7 +14,7 @@ module.exports = {
   parserOptions: {
     project: './tsconfig.json',
   },
-  plugins: ['react-refresh'],
+  plugins: ['react-refresh', 'simple-import-sort'],
   settings: {
     react: {
       version: 'detect',
@@ -31,6 +31,11 @@ module.exports = {
       'warn',
       {allowConstantExport: true},
     ],
+
+
+    'simple-import-sort/imports': 'error',
+    'simple-import-sort/exports': 'error',
+
     'import/no-absolute-path': 'off',
     'react/react-in-jsx-scope': 'off',
     'import/prefer-default-export': 'off',

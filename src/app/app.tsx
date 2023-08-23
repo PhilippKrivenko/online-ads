@@ -1,7 +1,8 @@
 import {Provider} from 'react-redux';
 import {BrowserRouter} from 'react-router-dom';
+
 import Routing from './routes';
-import {setupStore} from './store';
+import {setupStore} from './store.ts';
 
 export default function App() {
   const store = setupStore();
