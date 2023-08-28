@@ -1,4 +1,6 @@
-type Ad = {
+import {AdCategories, PromiseStatuses} from '@shared/lib';
+
+interface IAd {
   name: string;
   price: number;
   coordinates: [number, number];
@@ -13,39 +15,49 @@ type Ad = {
     building: string;
   };
   publishDate: string;
-  category: string;
+  category: AdCategories;
   photos: string[];
-};
+}
 
-export type AdEstate = Ad & {
+export interface IAdEstate extends IAd {
   filters: {
     type: string;
     area: number;
     roomsCount: number;
   };
-};
+}
 
-export type AdCar = Ad & {
+export interface IAdCar extends IAd {
   filters: {
     productionYear: number;
     transmission: string;
     bodyType: string;
   };
-};
+}
 
-export type AdLaptop = Ad & {
+export interface IAdLaptop extends IAd {
   filters: {
     type: string;
     ramValue: number | string;
     screenSize: number;
     cpuType: string;
   };
-};
+}
 
-export type AdPhotoCamera = Ad & {
+export interface IAdPhotoCamera extends IAd {
   filters: {
     type: string;
     matrixResolution: string;
     supporting: string;
   };
-};
+}
+
+export type Ad = IAdCar | IAdEstate | IAdPhotoCamera | IAdLaptop;
+export type AdsList = Array<Ad>;
+
+export interface ISliceState {
+  adsList: AdsList;
+  wishlist: AdsList;
+  status: PromiseStatuses;
+  error: string;
+}

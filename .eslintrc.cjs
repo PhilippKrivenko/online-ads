@@ -32,12 +32,12 @@ module.exports = {
       {allowConstantExport: true},
     ],
 
-
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
 
     'import/no-absolute-path': 'off',
     'react/react-in-jsx-scope': 'off',
     'import/prefer-default-export': 'off',
+    'no-param-reassign': 'off'
   },
 };
