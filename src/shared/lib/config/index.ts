@@ -1,2 +1,3 @@
-export {AdCategories} from './AdsCategories';
-export {PromiseStatuses} from './promiseStatuses';
+export {AdCategories} from './adsCategories';
+export {PromiseStatuses} from './PromiseStatuses';
+export {SortingOrder} from './sortingOrder';

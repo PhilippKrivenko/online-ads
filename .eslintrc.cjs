@@ -38,6 +38,7 @@ module.exports = {
     'import/no-absolute-path': 'off',
     'react/react-in-jsx-scope': 'off',
     'import/prefer-default-export': 'off',
-    'no-param-reassign': 'off'
+    'no-param-reassign': 'off',
+    'react/no-array-index-key': 'off',
   },
 };

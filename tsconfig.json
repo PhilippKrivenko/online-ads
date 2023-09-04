@@ -1,14 +1,15 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": [
-      "ESNext",
+      "ES2020",
       "DOM",
       "DOM.Iterable"
     ],
-    "module": "ESNext",
+    "module": "ES2020",
     "skipLibCheck": true,
+
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": false,
@@ -16,37 +17,40 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+
     /* Alias */
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "paths": {
       "@app/*": [
-        "./src/app/*"
+        "app/*"
       ],
       "@pages/*": [
-        "./src/pages/*"
+        "pages/*"
       ],
       "@features/*": [
-        "./src/features/*"
+        "features/*"
       ],
       "@entities/*": [
-        "./src/entities/*"
+        "entities/*"
       ],
       "@shared/*": [
-        "./src/shared/*"
+        "shared/*"
       ],
-      "@mocks/*": [
-        "./src/mocks/*"
-      ]
+      "@widgets/*": [
+        "widgets/*"
+      ],
     }
   },
+
   "include": [
     "src",
-    "types"
+    "types/*.d.ts"
   ],
   "references": [
     {

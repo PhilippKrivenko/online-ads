@@ -1,3 +1,3 @@
-export default function AdsList() {
+export function AdsList() {
   return <div />;
 }
