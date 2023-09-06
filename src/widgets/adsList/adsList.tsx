@@ -1,4 +1,5 @@
 import {AdCard, useAdsList} from '@entities/ads';
+import {useWishlist} from '@entities/wishlist';
 import {AdsFilterForm, AdsSortingForm} from '@features/ads';
 import {AddToWishlistButton} from '@features/wishlist';
 import {Ad, usePromiseStatus} from '@shared/lib';
@@ -6,7 +7,8 @@ import {ErrorIndicator, Spinner} from '@shared/ui';
 import {MouseEventHandler} from 'react';
 
 export function AdsList() {
-  const {adsList, status} = useAdsList();
+  const {ads, status} = useAdsList();
+  const {wishlist, showWishlist} = useWishlist();
   const {isPending, isFulfilled, isRejected} = usePromiseStatus(status);
 
   const handleAdCard: MouseEventHandler<HTMLButtonElement> = () => {};
@@ -25,7 +27,7 @@ export function AdsList() {
         {isPending && <Spinner />}
         {isFulfilled && (
           <ul>
-            {adsList.map((item: Ad, index) => (
+            {ads.map((item: Ad, index) => (
               <li key={index}>
                 <AddToWishlistButton data={item} />
                 <AdCard adData={item} handleClick={handleAdCard} />

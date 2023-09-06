@@ -1,13 +1,45 @@
+import {setFilters} from '@entities/ads';
+import {
+  CarFilter,
+  EstateFilter,
+  FilterRange,
+  LaptopFilter,
+  PhotoCameraFilter,
+  useAdCategory,
+} from '@features/ads';
+import {AdCategories, adPriceMax, adPriceMin, IAdFilters} from '@shared/lib';
+import {useAppDispatch} from '@shared/model';
+import {ConfigProvider, Slider} from 'antd';
+import {SubmitHandler, useForm} from 'react-hook-form';
+
 export function AdsFilterForm() {
+  const dispatch = useAppDispatch();
+  const {isEstateCategory, isCarCategory, isPhotoCameraCategory, isLaptopCategory} =
+    useAdCategory();
+  const {register, handleSubmit, setValue} = useForm<IAdFilters>({
+    defaultValues: {
+      category: AdCategories.ALL,
+      priceMin: adPriceMin,
+      priceMax: adPriceMax,
+    },
+  });
+
+  const onSubmit: SubmitHandler<IAdFilters> = (data) => {
+    dispatch(setFilters(data));
+  };
+
+  const onRange = (data: FilterRange) => {
+    setValue('priceMin', data[0]);
+    setValue('priceMax', data[1]);
+  };
+
   return (
-    <form action="#" method="post">
+    <form onChange={handleSubmit(onSubmit)}>
       <div>
         <label htmlFor="categories">
           Категория товаров
-          <select id="categories" name="categories">
-            <option value="all" selected>
-              Все
-            </option>
+          <select {...register('category')} id="categories">
+            <option value="all">Все</option>
             <option value="estate">Недвижимость</option>
             <option value="laptops">Ноутбуки</option>
             <option value="camera">Фотоаппараты</option>
@@ -24,13 +56,39 @@ export function AdsFilterForm() {
       </div>
 
       <div>
-        <label htmlFor="range">
-          Цена, ₽
-          <input type="text" id="sampleSlider" />
-        </label>
+        <p>Цена, ₽</p>
+
+        <div>
+          <label htmlFor="range-min">
+            От
+            <input {...register('priceMin')} type="text" id="range-min" />
+          </label>
+          <label htmlFor="range-max">
+            До
+            <input {...register('priceMax')} type="text" id="range-max" />
+          </label>
+        </div>
+
+        <ConfigProvider
+          theme={{
+            components: {
+              Slider: {},
+            },
+          }}
+        >
+          <Slider
+            range={{draggableTrack: true}}
+            defaultValue={[adPriceMin, adPriceMax]}
+            max={adPriceMax}
+            onChange={onRange}
+          />
+        </ConfigProvider>
       </div>
 
-      <button type="submit">Показать</button>
+      {isCarCategory && <CarFilter register={register} />}
+      {isPhotoCameraCategory && <PhotoCameraFilter register={register} />}
+      {isEstateCategory && <EstateFilter register={register} />}
+      {isLaptopCategory && <LaptopFilter register={register} />}
     </form>
   );
 }

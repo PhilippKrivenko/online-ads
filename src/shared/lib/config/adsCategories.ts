@@ -1,6 +1,7 @@
 export enum AdCategories {
-  ESTATE = `Недвижимость`,
-  CAR = `Автомобиль`,
-  LAPTOP = `Ноутбук`,
-  PHOTO_CAMERA = `Фотоаппарат`,
+  ALL = 'all',
+  ESTATE = `estate`,
+  CAR = `cars`,
+  LAPTOP = `laptops`,
+  PHOTO_CAMERA = `camera`,
 }

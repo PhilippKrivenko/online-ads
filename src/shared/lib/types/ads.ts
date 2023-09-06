@@ -52,5 +52,22 @@ export interface IAdPhotoCamera extends IAd {
   };
 }
 
+export interface IAdFilters {
+  category: AdCategories;
+  priceMin: number;
+  priceMax: number;
+  type?: string[];
+  area?: number;
+  roomsCount?: number;
+  productionYear?: number;
+  transmission?: string;
+  bodyType?: string;
+  ramValue?: number | string;
+  screenSize?: number;
+  cpuType?: string;
+  matrixResolution?: string;
+  supporting?: string;
+}
+
 export type Ad = IAdCar | IAdEstate | IAdPhotoCamera | IAdLaptop;
 export type AdsList = Array<Ad>;

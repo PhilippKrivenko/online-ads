@@ -1,91 +1,129 @@
-export function LaptopFilter() {
+import {IAdFilters} from '@shared/lib';
+import {UseFormRegister} from 'react-hook-form';
+
+interface IProps {
+  register: UseFormRegister<IAdFilters>;
+}
+export function LaptopFilter({register}: IProps) {
   return (
-    <div className="filter__camera">
-      <fieldset className="filter__type filter__type--camera">
-        <legend>Тип фотоаппарата</legend>
-        <ul className="filter__checkboxes-list filter__checkboxes-list--camera">
-          <li className="filter__checkboxes-item">
-            <label htmlFor="mirror">
-              Зеркальный
+    <div>
+      <fieldset>
+        <legend>Тип ноутбука</legend>
+        <ul>
+          <li>
+            <label htmlFor="ultra">
+              Ультрабук
+              <input {...register('type')} type="checkbox" value="ultra" id="ultra" />
+            </label>
+          </li>
+          <li>
+            <label htmlFor="home">
+              Домашний ноутбук
+              <input {...register('type')} type="checkbox" value="home" id="home" />
+            </label>
+          </li>
+          <li>
+            <label htmlFor="gaming">
+              Игровой ноутбук
+              <input {...register('type')} type="checkbox" value="gaming" id="gaming" />
+            </label>
+          </li>
+        </ul>
+      </fieldset>
+      <fieldset>
+        <legend>Минимальный объем оперативной памяти</legend>
+        <ul>
+          <li>
+            <label htmlFor="any_ram">
+              Любой
+              <input {...register('ramValue')} type="radio" value="any" id="any_ram" />
+            </label>
+          </li>
+          <li>
+            <label htmlFor="4gb">
+              4 Гб
+              <input {...register('ramValue')} type="radio" value="4gb" id="4gb" />
+            </label>
+          </li>
+          <li>
+            <label htmlFor="8gb">
+              8 Гб
+              <input {...register('ramValue')} type="radio" value="8gb" id="8gb" />
+            </label>
+          </li>
+          <li>
+            <label htmlFor="16gb">
+              16 Гб
+              <input {...register('ramValue')} type="radio" value="16gb" id="16gb" />
+            </label>
+          </li>
+        </ul>
+      </fieldset>
+      <fieldset>
+        <legend>Минимальная диагональ экрана</legend>
+        <ul>
+          <li>
+            <label htmlFor="any_diagonal">
+              Любая
               <input
-                className="visually-hidden"
-                type="checkbox"
-                name="camera-type"
-                value="mirror"
-                id="mirror"
+                {...register('screenSize')}
+                type="radio"
+                value="any"
+                id="any_diagonal"
+                checked
               />
             </label>
           </li>
-          <li className="filter__checkboxes-item">
-            <label htmlFor="digital">
-              Цифровой
-              <input
-                className="visually-hidden"
-                type="checkbox"
-                name="camera-type"
-                value="digital"
-                id="digital"
-              />
+          <li>
+            <label htmlFor="13in">
+              13<sup>″</sup>
+              <input {...register('screenSize')} type="radio" value="13in" id="13in" />
             </label>
           </li>
-          <li className="filter__checkboxes-item">
-            <label htmlFor="mirrorless">
-              Беззеркальный
-              <input
-                className="visually-hidden"
-                type="checkbox"
-                name="camera-type"
-                value="mirrorless"
-                id="mirrorless"
-              />
+          <li>
+            <label htmlFor="14in">
+              14<sup>″</sup>
+              <input {...register('screenSize')} type="radio" value="14in" id="14in" />
+            </label>
+          </li>
+          <li>
+            <label htmlFor="15in">
+              15<sup>″</sup>
+              <input {...register('screenSize')} type="radio" value="15in" id="15in" />
+            </label>
+          </li>
+          <li>
+            <label htmlFor="17in">
+              17<sup>″</sup>
+              <input {...register('screenSize')} type="radio" value="17in" id="17in" />
             </label>
           </li>
         </ul>
       </fieldset>
 
-      <div className="filter__select-wrapper filter__select-wrapper--min-resolution">
-        <label htmlFor="resolution-matrix">
-          Минимальное разрешение матрицы
-          <select id="resolution-matrix" name="resolution-matrix">
-            <option value="1mp" selected>
-              1 МП
-            </option>
-            <option value="3mp">3 МП</option>
-            <option value="5mp">5 МП</option>
-            <option value="7mp">7 МП</option>
-            <option value="10mp">10 МП</option>
-          </select>
-        </label>
-        <svg width="14" height="8" viewBox="0 0 14 8" xmlns="http://www.w3.org/2000/svg">
-          <path
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L7 5.58579L12.2929 0.292893C12.6834 -0.0976311 13.3166 -0.0976311 13.7071 0.292893C14.0976 0.683417 14.0976 1.31658 13.7071 1.70711L7.70711 7.70711C7.31658 8.09763 6.68342 8.09763 6.29289 7.70711L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z"
-          />
-        </svg>
-      </div>
-
-      <div className="filter__select-wrapper">
-        <label htmlFor="resolution-video">
-          Минимальное разрешение видео
-          <select id="resolution-video" name="resolution-video">
-            <option value="any" selected>
-              Любое
-            </option>
-            <option value="HD">HD</option>
-            <option value="Full_HD">Full HD</option>
-            <option value="4K">4K</option>
-            <option value="5K">5K</option>
-          </select>
-        </label>
-        <svg width="14" height="8" viewBox="0 0 14 8" xmlns="http://www.w3.org/2000/svg">
-          <path
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L7 5.58579L12.2929 0.292893C12.6834 -0.0976311 13.3166 -0.0976311 13.7071 0.292893C14.0976 0.683417 14.0976 1.31658 13.7071 1.70711L7.70711 7.70711C7.31658 8.09763 6.68342 8.09763 6.29289 7.70711L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z"
-          />
-        </svg>
-      </div>
+      <fieldset>
+        <legend>Тип процессора</legend>
+        <ul>
+          <li>
+            <label htmlFor="i3">
+              Intel Core i3
+              <input {...register('cpuType')} type="checkbox" value="i3" id="i3" />
+            </label>
+          </li>
+          <li>
+            <label htmlFor="i5">
+              Intel Core i5
+              <input {...register('cpuType')} type="checkbox" value="i5" id="i5" />
+            </label>
+          </li>
+          <li>
+            <label htmlFor="i7">
+              Intel Core i7
+              <input {...register('cpuType')} type="checkbox" value="i7" id="i7" />
+            </label>
+          </li>
+        </ul>
+      </fieldset>
     </div>
   );
 }

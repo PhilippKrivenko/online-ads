@@ -5,6 +5,7 @@ declare global {
   /* Type aliases */
   export type Url = string;
   export type Id = number;
+  export type AdName = string;
 }
 
 export {};

@@ -10,6 +10,8 @@ export function AdCard({adData, handleClick}: IProps) {
   const {address, price, name, photos, publishDate} = adData;
   const {city, street, building} = address;
 
+  const date = new Date(+publishDate);
+
   return (
     <>
       <div>
@@ -34,7 +36,9 @@ export function AdCard({adData, handleClick}: IProps) {
         <div>
           {city}, {street}, {building}
         </div>
-        <div>Размещено {new Date(publishDate).getDate()}</div>
+        <div>
+          Размещено {date.getDate()}.{date.getMonth()}.{date.getFullYear()}
+        </div>
       </div>
     </>
   );

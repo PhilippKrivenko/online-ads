@@ -1,10 +1,17 @@
-export function CarFilter() {
+import {IAdFilters} from '@shared/lib';
+import {UseFormRegister} from 'react-hook-form';
+
+interface IProps {
+  register: UseFormRegister<IAdFilters>;
+}
+
+export function CarFilter({register}: IProps) {
   return (
     <div className="filter__car">
       <div className="filter__select-wrapper">
         <label htmlFor="car_year">
           Минимальный год выпуска
-          <select id="car_year" name="car_year">
+          <select {...register('productionYear')} id="car_year">
             <option value="1900" selected>
               1900
             </option>
@@ -30,9 +37,9 @@ export function CarFilter() {
             <label htmlFor="any_transmission">
               Любая
               <input
+                {...register('transmission')}
                 className="visually-hidden"
                 type="radio"
-                name="transmission"
                 value="any"
                 id="any_transmission"
                 checked
@@ -43,9 +50,9 @@ export function CarFilter() {
             <label htmlFor="mechanic_transmission">
               Механика
               <input
+                {...register('transmission')}
                 className="visually-hidden"
                 type="radio"
-                name="transmission"
                 value="mechanic"
                 id="mechanic_transmission"
               />
@@ -55,9 +62,9 @@ export function CarFilter() {
             <label htmlFor="auto_transmission">
               Автомат
               <input
+                {...register('transmission')}
                 className="visually-hidden"
                 type="radio"
-                name="transmission"
                 value="auto"
                 id="auto_transmission"
               />
@@ -73,9 +80,9 @@ export function CarFilter() {
             <label htmlFor="sedan">
               Седан
               <input
+                {...register('bodyType')}
                 className="visually-hidden"
                 type="checkbox"
-                name="car-body"
                 value="sedan"
                 id="sedan"
               />
@@ -85,9 +92,9 @@ export function CarFilter() {
             <label htmlFor="universal">
               Универсал
               <input
+                {...register('bodyType')}
                 className="visually-hidden"
                 type="checkbox"
-                name="car-body"
                 value="universal"
                 id="universal"
               />
@@ -97,9 +104,9 @@ export function CarFilter() {
             <label htmlFor="hatchback">
               Хэтчбэк
               <input
+                {...register('bodyType')}
                 className="visually-hidden"
                 type="checkbox"
-                name="car-body"
                 value="hatchback"
                 id="hatchback"
               />
@@ -109,9 +116,9 @@ export function CarFilter() {
             <label htmlFor="jeep">
               Внедорожник
               <input
+                {...register('bodyType')}
                 className="visually-hidden"
                 type="checkbox"
-                name="car-body"
                 value="jeep"
                 id="jeep"
               />
@@ -121,9 +128,9 @@ export function CarFilter() {
             <label htmlFor="cupe">
               Купэ
               <input
+                {...register('bodyType')}
                 className="visually-hidden"
                 type="checkbox"
-                name="car-body"
                 value="cupe"
                 id="cupe"
               />

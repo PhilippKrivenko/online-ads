@@ -1,3 +1,9 @@
-export {addToWishlist, getWishlist, reducer, removeFromWishlist} from './model/slice';
-export type {AdName, ISliceState} from './model/types';
-export type {useWishlist} from './model/useWishlist';
+export {
+  addToWishlist,
+  getWishlist,
+  removeFromWishlist,
+  selectWishlist,
+  setShowWishlist,
+  wishlistSlice,
+} from './model/slice';
+export {useWishlist} from './model/useWishlist';

@@ -9,7 +9,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'prettier',
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  ignorePatterns: ['build', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: './tsconfig.json',
@@ -40,5 +40,6 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'no-param-reassign': 'off',
     'react/no-array-index-key': 'off',
+    'react/jsx-props-no-spreading': 'off',
   },
 };

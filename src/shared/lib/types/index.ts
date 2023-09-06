@@ -1,1 +1,1 @@
-export type {Ad, AdsList, IAdCar, IAdEstate, IAdLaptop, IAdPhotoCamera} from './ads';
+export type * from './ads';

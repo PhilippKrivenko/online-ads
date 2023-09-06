@@ -1,6 +1,25 @@
+import {setSortingOrder} from '@entities/ads';
+import {setShowWishlist} from '@entities/wishlist';
+import {SortingOrder} from '@shared/lib';
+import {useAppDispatch} from '@shared/model';
+import {SubmitHandler, useForm} from 'react-hook-form';
+
+interface Form {
+  sortingOrder: SortingOrder;
+  favourites: boolean;
+}
+
 export function AdsSortingForm() {
+  const dispatch = useAppDispatch();
+  const {register, handleSubmit} = useForm<Form>();
+
+  const change: SubmitHandler<Form> = (data) => {
+    dispatch(setSortingOrder(data.sortingOrder));
+    dispatch(setShowWishlist(data.favourites));
+  };
+
   return (
-    <form>
+    <form onChange={handleSubmit(change)}>
       <fieldset>
         <legend>Показать сначала:</legend>
 
@@ -8,21 +27,37 @@ export function AdsSortingForm() {
           <li>
             <label htmlFor="sort-popular">
               Популярные
-              <input type="radio" name="sorting-order" value="popular" id="sort-popular" checked />
+              <input
+                {...register('sortingOrder')}
+                type="radio"
+                value={SortingOrder.POPULAR}
+                id="sort-popular"
+                checked
+              />
             </label>
           </li>
 
           <li>
             <label htmlFor="sort-cheap">
               Дешёвые
-              <input type="radio" name="sorting-order" value="cheap" id="sort-cheap" />
+              <input
+                {...register('sortingOrder')}
+                type="radio"
+                value={SortingOrder.CHEAP}
+                id="sort-cheap"
+              />
             </label>
           </li>
 
           <li>
             <label htmlFor="sort-new">
               Новые
-              <input type="radio" name="sorting-order" value="cheap" id="sort-new" />
+              <input
+                {...register('sortingOrder')}
+                type="radio"
+                value={SortingOrder.NEW}
+                id="sort-new"
+              />
             </label>
           </li>
         </ul>
@@ -44,7 +79,7 @@ export function AdsSortingForm() {
             />
           </svg>
           Показать избранные
-          <input type="checkbox" name="favourites" id="favourites" />
+          <input type="checkbox" {...register('favourites')} />
         </label>
       </div>
     </form>

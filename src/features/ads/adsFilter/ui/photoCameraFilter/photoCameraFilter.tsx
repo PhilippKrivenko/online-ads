@@ -1,4 +1,11 @@
-export function PhotoCameraFilter() {
+import {IAdFilters} from '@shared/lib';
+import {UseFormRegister} from 'react-hook-form';
+
+interface IProps {
+  register: UseFormRegister<IAdFilters>;
+}
+
+export function PhotoCameraFilter({register}: IProps) {
   return (
     <div className="filter__camera">
       <fieldset className="filter__type filter__type--camera">
@@ -8,9 +15,9 @@ export function PhotoCameraFilter() {
             <label htmlFor="mirror">
               Зеркальный
               <input
+                {...register('type')}
                 className="visually-hidden"
                 type="checkbox"
-                name="camera-type"
                 value="mirror"
                 id="mirror"
               />
@@ -20,9 +27,9 @@ export function PhotoCameraFilter() {
             <label htmlFor="digital">
               Цифровой
               <input
+                {...register('type')}
                 className="visually-hidden"
                 type="checkbox"
-                name="camera-type"
                 value="digital"
                 id="digital"
               />
@@ -32,9 +39,9 @@ export function PhotoCameraFilter() {
             <label htmlFor="mirrorless">
               Беззеркальный
               <input
+                {...register('type')}
                 className="visually-hidden"
                 type="checkbox"
-                name="camera-type"
                 value="mirrorless"
                 id="mirrorless"
               />
@@ -46,7 +53,7 @@ export function PhotoCameraFilter() {
       <div className="filter__select-wrapper filter__select-wrapper--min-resolution">
         <label htmlFor="resolution-matrix">
           Минимальное разрешение матрицы
-          <select id="resolution-matrix" name="resolution-matrix">
+          <select {...register('matrixResolution')} id="resolution-matrix">
             <option value="1mp" selected>
               1 МП
             </option>
@@ -68,7 +75,7 @@ export function PhotoCameraFilter() {
       <div className="filter__select-wrapper">
         <label htmlFor="resolution-video">
           Минимальное разрешение видео
-          <select id="resolution-video" name="resolution-video">
+          <select {...register('supporting')} id="resolution-video">
             <option value="any" selected>
               Любое
             </option>

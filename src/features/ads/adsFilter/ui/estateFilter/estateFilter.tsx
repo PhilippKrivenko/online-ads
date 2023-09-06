@@ -1,4 +1,11 @@
-export function EstateFilter() {
+import {IAdFilters} from '@shared/lib';
+import {UseFormRegister} from 'react-hook-form';
+
+interface IProps {
+  register: UseFormRegister<IAdFilters>;
+}
+
+export function EstateFilter({register}: IProps) {
   return (
     <div className="filter__estate">
       <fieldset className="filter__type filter__type--estate">
@@ -9,9 +16,9 @@ export function EstateFilter() {
             <label htmlFor="house">
               Дом
               <input
+                {...register('type')}
                 className="visually-hidden"
                 type="checkbox"
-                name="estate-type"
                 value="house"
                 id="house"
               />
@@ -21,9 +28,9 @@ export function EstateFilter() {
             <label htmlFor="flat">
               Квартира
               <input
+                {...register('type')}
                 className="visually-hidden"
                 type="checkbox"
-                name="estate-type"
                 value="flat"
                 id="flat"
               />
@@ -33,9 +40,9 @@ export function EstateFilter() {
             <label htmlFor="apartments">
               Апартаменты
               <input
+                {...register('type')}
                 className="visually-hidden"
                 type="checkbox"
-                name="estate-type"
                 value="apartments"
                 id="apartments"
               />
@@ -47,7 +54,7 @@ export function EstateFilter() {
       <div className="filter__min-square">
         <label htmlFor="square">
           Минимальная площать, м<sup>2</sup>
-          <input type="number" id="square" name="min-square" min="1" value="" placeholder="0" />
+          <input {...register('area')} type="number" id="square" min="1" value="" placeholder="0" />
         </label>
       </div>
 
@@ -59,9 +66,9 @@ export function EstateFilter() {
             <label htmlFor="any_room">
               Любое
               <input
+                {...register('roomsCount')}
                 className="visually-hidden"
                 type="radio"
-                name="rooms"
                 value="any"
                 id="any_room"
               />
@@ -70,22 +77,34 @@ export function EstateFilter() {
           <li className="filter__radiobuttons-item">
             <label htmlFor="one">
               1
-              <input className="visually-hidden" type="radio" name="rooms" value="one" id="one" />
+              <input
+                {...register('roomsCount')}
+                className="visually-hidden"
+                type="radio"
+                value="one"
+                id="one"
+              />
             </label>
           </li>
           <li className="filter__radiobuttons-item">
             <label htmlFor="two">
               2
-              <input className="visually-hidden" type="radio" name="rooms" value="two" id="two" />
+              <input
+                {...register('roomsCount')}
+                className="visually-hidden"
+                type="radio"
+                value="two"
+                id="two"
+              />
             </label>
           </li>
           <li className="filter__radiobuttons-item">
             <label htmlFor="three">
               3
               <input
+                {...register('roomsCount')}
                 className="visually-hidden"
                 type="radio"
-                name="rooms"
                 value="three"
                 id="three"
               />
@@ -94,16 +113,22 @@ export function EstateFilter() {
           <li className="filter__radiobuttons-item">
             <label htmlFor="four">
               4
-              <input className="visually-hidden" type="radio" name="rooms" value="four" id="four" />
+              <input
+                {...register('roomsCount')}
+                className="visually-hidden"
+                type="radio"
+                value="four"
+                id="four"
+              />
             </label>
           </li>
           <li className="filter__radiobuttons-item">
             <label htmlFor="fivemore">
               5+
               <input
+                {...register('roomsCount')}
                 className="visually-hidden"
                 type="radio"
-                name="rooms"
                 value="fivemore"
                 id="fivemore"
               />

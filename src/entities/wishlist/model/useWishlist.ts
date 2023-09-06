@@ -1,14 +1,14 @@
-import {getWishlist} from '@entities/wishlist';
+import {getWishlist, selectWishlist} from '@entities/wishlist';
 import {useAppDispatch, useAppSelector} from '@shared/model';
 import {useEffect} from 'react';
 
 export const useWishlist = () => {
   const dispatch = useAppDispatch();
-  const wishlist = useAppSelector((state) => state.wishlistManage.wishlist);
+  const {wishlist, showWishlist} = useAppSelector(selectWishlist);
 
   useEffect(() => {
     dispatch(getWishlist());
   }, [dispatch]);
 
-  return {wishlist};
+  return {wishlist, showWishlist};
 };
